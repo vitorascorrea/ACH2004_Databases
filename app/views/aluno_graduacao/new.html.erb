@@ -1,0 +1,22 @@
+<%= form_for @aluno_grad, :method => :post do |f| %>
+  <p>
+    <%= f.label :semestre_atual %><br>
+    <%= f.text_field :semestre_atual %>
+  </p> 
+  <p>
+    <%= f.label :isento %><br>
+    <%= f.select(:isento, options_for_select(['S','N'])) %>
+  </p>
+   <p>
+    <%= f.label :data_inicio %><br>
+    <%= f.text_area :data_inicio %>
+  </p>
+  <p>
+    <%= f.label :id_curso %><br>
+    <%= f.select :id_curso, CursoGraduacao.all.collect {|c| [ c.nome_curso, c.id_cgrad ] } %>
+  </p>
+	<%= f.hidden_field :cpf, :value => params[:cpf] %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

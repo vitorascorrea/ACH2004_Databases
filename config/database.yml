@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: universidade
+  pool: 5
+  username: admin
+  password: root
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: universidade
+  pool: 5
+  username: admin
+  password: root
+

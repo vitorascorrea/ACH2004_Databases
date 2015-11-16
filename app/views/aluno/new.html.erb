@@ -1,0 +1,29 @@
+<%= form_for @aluno, :method => :post do |f| %>
+  <p>
+    <%= f.label :cpf %><br>
+    <%= f.text_field :cpf %>
+  </p> 
+  <p>
+    <%= f.label :nome %><br>
+    <%= f.text_area :nome %>
+  </p>
+   <p>
+    <%= f.label :rg %><br>
+    <%= f.text_area :rg %>
+  </p>
+  <p>
+    <%= f.label :nascimento %><br>
+    <%= f.text_area :nascimento %>
+  </p>
+  <p>
+    <%= f.label :sexo %><br>
+    <%= f.text_area :sexo %>
+  </p>
+  <p>
+    <%= label_tag :tipo %><br>
+    <%= select_tag(:tipo, options_for_select(['Grad','Pos'])) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
