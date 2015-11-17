@@ -1,27 +1,28 @@
+<%= flash_message %>
 <%= form_for @aluno, :method => :post do |f| %>
   <p>
     <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
+    <%= f.text_field :cpf, :required => true, :maxlength => 11 %>
   </p> 
   <p>
     <%= f.label :nome %><br>
-    <%= f.text_area :nome %>
+    <%= f.text_field :nome, :required => true, :maxlength => 30 %>
   </p>
    <p>
     <%= f.label :rg %><br>
-    <%= f.text_area :rg %>
+    <%= f.text_field :rg, :required => true, :maxlength => 9 %>
   </p>
   <p>
     <%= f.label :nascimento %><br>
-    <%= f.text_area :nascimento %>
+    <%= f.date_select :nascimento, start_year: 1905, :required => true %>
   </p>
   <p>
     <%= f.label :sexo %><br>
-    <%= f.text_area :sexo %>
+    <%= f.text_field :sexo, :required => true, :maxlength => 1 %>
   </p>
   <p>
     <%= label_tag :tipo %><br>
-    <%= select_tag(:tipo, options_for_select(['Grad','Pos'])) %>
+    <%= select_tag(:tipo, options_for_select(['Graduação'])) %>
   </p>
   <p>
     <%= f.submit %>

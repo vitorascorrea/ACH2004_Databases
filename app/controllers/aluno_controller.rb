@@ -2,18 +2,16 @@ class AlunoController < ApplicationController
 	def new
 		@aluno = Aluno.new
 	end
-	 def create
+	def create
     @aluno = Aluno.new(aluno_params)
-		if @aluno.save
-			if params[:tipo] == 'Grad'
-				redirect_to new_aluno_graduacao_path(:cpf => params[:aluno][:cpf])
-			elsif
-				redirect_to new_aluno_pos_path(:cpf => params[:aluno][:cpf])
+			if Aluno.where(cpf: params[:aluno][:cpf]).blank?
+					@aluno.save
+					redirect_to new_aluno_graduacao_path(:cpf => params[:aluno][:cpf])
+			else
+				flash[:warning] = "CPF já cadastrado."
+		    redirect_to new_aluno_path
 			end
-		else
-	    redirect_to new_aluno_path
-		end
-  end
+	end
 	def index
 		@aluno = Aluno.all	
 	end

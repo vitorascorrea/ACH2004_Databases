@@ -1,6 +1,26 @@
 Escolha o que quer fazer:
-<br>
-<%= link_to "Inserir novo aluno", new_aluno_path %>
-<br>
-<%= link_to "Listar alunos", aluno_index_path %>
+
+<table align=center style="text-align: center;">
+    <tr>
+        <th width=200>Gestão de Alunos (Entidade Forte)</th>
+        <th width=200>Gestão de Cursos de Graduação (Entidade Forte)</th>
+        <th width=200>Gestão de Projetos de Pesquisa (N para N)</th>
+    </tr>
+    <tr>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+    </tr>
+    <tr>
+        <td><%= link_to "Listar alunos", aluno_index_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+    </tr>
+    <tr>
+        <td><%= link_to "Excluir alunos", aluno_index_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+        <td><%= link_to "Inserir novo aluno", new_aluno_path %></td>
+    </tr>
+</table>
+
 

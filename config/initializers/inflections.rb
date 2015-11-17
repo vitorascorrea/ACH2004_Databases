@@ -22,4 +22,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'curso_graduacao', 'curso_graduacao'
 	inflect.irregular 'projeto_pesquisa', 'projeto_pesquisa'
 	inflect.irregular 'curso_pos', 'curso_pos'
+	inflect.irregular 'departamento', 'departamento'
 end

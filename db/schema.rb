@@ -16,21 +16,28 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aluno", primary_key: "cpf", force: :cascade do |t|
+  create_table "aluno", {:id => false} do |t|
+    t.decimal "cpf",                  precision: 11, null: false
     t.string "nome",       limit: 50, null: false
     t.string "rg",         limit: 9,  null: false
     t.date   "nascimento",            null: false
     t.string "sexo",       limit: 1,  null: false
   end
-
-  create_table "aluno_graduacao", primary_key: "cpf", force: :cascade do |t|
+  
+  execute "ALTER TABLE aluno ADD PRIMARY KEY (cpf);"
+  
+  create_table "aluno_graduacao", {:id => false} do |t|
+    t.decimal "cpf",                  precision: 11, null: false
     t.decimal "semestre_atual",           precision: 1, null: false
     t.string  "isento",         limit: 1,               null: false
     t.date    "data_inicio",                            null: false
     t.integer "id_curso",                               null: false
   end
-
-  create_table "aluno_pos", primary_key: "cpf", force: :cascade do |t|
+  
+  execute "ALTER TABLE aluno_graduacao ADD PRIMARY KEY (cpf);"
+  
+  create_table "aluno_pos", {:id => false} do |t|
+    t.decimal "cpf",                  precision: 11, null: false
     t.integer "id_bolsa"
     t.decimal "semestre_atual",           precision: 1, null: false
     t.string  "isento",         limit: 1,               null: false
@@ -38,6 +45,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "id_projeto",                             null: false
     t.integer "id_curso",                               null: false
   end
+  
+  execute "ALTER TABLE aluno_pos ADD PRIMARY KEY (cpf);"
 
   add_index "aluno_pos", ["id_bolsa"], name: "fkrecebe_id", unique: true, using: :btree
   add_index "aluno_pos", ["id_projeto"], name: "fkassociado_ind", using: :btree
@@ -237,12 +246,14 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "projeto_pesquisa", ["id_professor"], name: "fkorienta_ind", using: :btree
 
-  create_table "registro", primary_key: "cpf", force: :cascade do |t|
+  create_table "registro", {:id => false} do |t|
+    t.decimal "cpf",                  precision: 11, null: false
     t.string "nome",       limit: 50, null: false
     t.string "rg",         limit: 9,  null: false
     t.date   "nascimento",            null: false
     t.string "sexo",       limit: 1,  null: false
   end
+  execute "ALTER TABLE registro ADD PRIMARY KEY (cpf);"
 
   create_table "turma_grad", primary_key: "id_turma", force: :cascade do |t|
     t.decimal "primeira_avaliacao",           precision: 2,  null: false
