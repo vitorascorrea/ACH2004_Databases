@@ -1,4 +1,4 @@
-<%= link_to "Clique para voltar", root_url %>
+﻿<%= link_to "Clique para voltar", root_url %>
 <h2>Alunos de Graduação</h2>
 <table style="text-align: center;">
     <tr>
@@ -8,7 +8,7 @@
     </tr>
     <% AlunoGraduacao.all.each do |a| %>
         <tr>
-         <td><%= Aluno.find(a.cpf).nome %></td>
+         <td><%= Aluno.find(a.cpf).nome.force_encoding("UTF-8") %></td>
          <td><%= CursoGraduacao.find(a.id_curso).nome_curso.force_encoding("UTF-8") %></td>
          <td><%= a.semestre_atual %></td>
         </tr>
